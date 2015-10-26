@@ -1,4 +1,4 @@
-package views;
+package modelo;
 
 public class Tarjeta {
 }
