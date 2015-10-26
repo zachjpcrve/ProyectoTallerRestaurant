@@ -10,12 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tiposUsuarios")
-public class TipoUsuario extends Model{
-
-    @Constraints.MaxLength(80)
-    private String descripcion;
-
+@Table(name = "tipoempleado")
+public class TipoEmpleado extends Model{
 
 
 
