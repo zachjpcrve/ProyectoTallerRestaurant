@@ -10,64 +10,54 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "cliente")
+@Table(name = "clientes")
 public class Cliente extends Model{
 
     @Id
-    private String codigo;
-
-    @Constraints.Required
-    private String username;
-
-    @Constraints.Required
-    private String password;
+    protected Long id;
 
 
     @OneToOne
-    @JoinColumn(name = "dni")
-    private
-    List<Persona> personasList;
+    Persona persona;
 
+    @Column(unique = true)
+    Long ruc;
 
-    /*Constructor*/
+    @OneToOne()
+    Login login;
+
     public Cliente(){
 
     }
-
-    /*Getters and Setters*/
-
-    public String getCodigo() {
-        return codigo;
+    public Long getId() {
+        return id;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public Persona getPersona() {
+        return persona;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
-    public String getPassword() {
-        return password;
+    public Long getRuc() {
+        return ruc;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setRuc(Long ruc) {
+        this.ruc = ruc;
     }
 
-    public List<Persona> getPersonasList() {
-        return personasList;
+    public Login getLogin() {
+        return login;
     }
 
-    public void setPersonasList(List<Persona> personasList) {
-        this.personasList = personasList;
+    public void setLogin(Login login) {
+        this.login = login;
     }
-
-
-
 }

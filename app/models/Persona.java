@@ -9,29 +9,75 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "persona")
+@Table(name = "personas")
 public class Persona extends Model{
 
     @Id
-    @Constraints.MaxLength(9)
-    private String dni;
+    protected Long id;
 
-    private String firstName;
+    @OneToOne(mappedBy = "persona",cascade = CascadeType.ALL)
+    Cliente cliente;
 
-    private String lastName;
+
+    @Constraints.Required
+    @Column(length = 40)
+    String nombres;
+
+    @Constraints.Required
+    @Column(length = 40)
+    String apellidos;
+
+    @Constraints.Required
+    @Column(unique = true,length = 9)
+    String dni;
+
+    @Column(length = 2)
+    int edad;
+
+    Long telefono;
+    @Column(length = 60)
+    String direccion;
 
     @Constraints.Email
-    private String email;
+    @Column(length = 60)
+    String email;
 
-    private String address;
-
-
-    /*Constructor*/
     public Persona(){
 
     }
-    /*Getters and Setters*/
 
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public String getNombres() {
+        return nombres;
+    }
+
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
 
     public String getDni() {
         return dni;
@@ -41,20 +87,28 @@ public class Persona extends Model{
         this.dni = dni;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public int getEdad() {
+        return edad;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
 
-    public String getLastName() {
-        return lastName;
+    public Long getTelefono() {
+        return telefono;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setTelefono(Long telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public String getEmail() {
@@ -63,13 +117,5 @@ public class Persona extends Model{
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 }
